@@ -1,0 +1,107 @@
+" http://spf13.com
+
+" Bundle Note {
+" vim +BundleInstall! +BundleClean
+" Bundle 'tpope/vim-fugitive'                       " git插件
+" Bundle 'rust-lang/rust.vim'                       " Rust
+" Bundle 'tpope/vim-cucumber'                       " Ruby
+" Bundle 'quentindecock/vim-cucumber-align-pipes'
+" Bundle 'cespare/vim-toml'                         " Tom
+" Bundle 'saltstack/salt-vim'                       " Salt Stack
+" Bundle 'nathanaelkane/vim-indent-guides'          " 缩进等级
+" Bundle 'bling/vim-bufferline'                     " 状态栏buffer
+" Bundle 'flazz/vim-colorschemes'                   " 配色
+" Bundle 'vim-erlang/vim-erlang-runtime'            " Erlang 缩进 语法
+" Bundle 'vim-erlang/vim-erlang-compiler'           " Erlang 语法检查 编译插件
+" Bundle 'vim-erlang/vim-erlang-omnicomplete'       " Erlang 内部插件
+" Bundle 'jimenezrick/vimerl'                       " Eralng
+" Bundle 'mbbill/undotree'                          " 文件历史                ,u
+" Bundle 'kristijanhusak/vim-multiple-cursors'      " 多光标写
+" Bundle 'gmarik/vundle'                            " 插件管理
+" Bundle 'MarcWeber/vim-addon-mw-utils'             " 基础插件
+" Bundle 'tomtom/tlib_vim'                          " 基础插件
+" Bundle 'scrooloose/nerdtree'                      " 树形目录插件 ,e
+" Bundle 'altercation/vim-colors-solarized'         " 经典主题
+" Bundle 'spf13/vim-colors'                         " 配色
+" Bundle 'tpope/vim-surround'                       " 快速给词加环绕符号,例如引号
+" Bundle 'tpope/vim-repeat'                         " 重复操作  .
+" Bundle 'jiangmiao/auto-pairs'                     " 自动完成环绕
+" Bundle 'ctrlpvim/ctrlp.vim'                       " Ctrl + P
+" Bundle 'tacahiroy/ctrlp-funky'                    " Ctrl + P 函数
+" Bundle 'vim-scripts/sessionman.vim'               " 标签
+" Bundle 'matchit.zip'                              " 环绕符成对跳转 %
+" Bundle 'bling/vim-airline'                        " 状态栏栏索引
+" Bundle 'powerline/fonts'                          " PowerLine字体
+" Bundle 'Lokaltog/vim-easymotion'                  " 跳转到光标后任意位置 ,,w ,,j
+" Bundle 'jistr/vim-nerdtree-tabs'                  " 目录树公用
+" Bundle 'mbbill/undotree'                          " 文件历史                ,u
+" Bundle 'vim-scripts/restore_view.vim'             " 存储文件鼠标和折叠等信息
+" Bundle 'mhinz/vim-signify'                        " 版本变化
+" Bundle 'tpope/vim-abolish.git'                    " 替换  :Subvert/di{e,ce}/spinner{,s}/g
+" Bundle 'osyo-manga/vim-over'                      " 预显示%s
+" Bundle 'kana/vim-textobj-user'                    " 自定义区域操作
+" Bundle 'kana/vim-textobj-indent'                  " 块操作
+" Bundle 'gcmt/wildfire.vim'                        " 环绕块选择 <Enter>
+" Bundle 'scrooloose/syntastic'                     " 语法检查
+" Bundle 'mattn/webapi-vim'                         " 基础插件
+" Bundle 'mattn/gist-vim'                           " gist
+" Bundle 'scrooloose/nerdcommenter'                 " 注释 ,cc ,cu
+" Bundle 'tpope/vim-commentary'                     " 注释 gcc gcu
+" Bundle 'godlygeek/tabular'                        " 对齐操作 ,a= ,a: ,a:: ,a,
+" Bundle 'Valloric/YouCompleteMe'                   " 自动补全
+" Bundle 'SirVer/ultisnips'                         " 代码块管理
+" Bundle 'honza/vim-snippets'                       " 代码块集合
+" Bundle 'tpope/vim-markdown'                       " markdown语法
+" Bundle 'spf13/vim-preview'                        " 预览
+" Bundle 'vim-erlang/vim-erlang-tags'               " Eralng Tags
+" Bundle 'jimenezrick/vimerl'                       " Eralng
+" Bundle 'TaskList.vim'                             " 任务列表 ,tl
+" Bundle 'thinca/vim-ref'                           " 用同一个窗口打开帮助文件
+
+" Environment {
+    " Setup Bundle Support {
+        " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype off
+        set rtp+=~/.vim/bundle/vundle
+        call vundle#rc()
+    " }
+    " Add an UnBundle command {
+    function! UnBundle(arg, ...)
+      let bundle = vundle#config#init_bundle(a:arg, a:000)
+      call filter(g:vundle#bundles, 'v:val["name_spec"] != "' . a:arg . '"')
+    endfunction
+
+    com! -nargs=+         UnBundle
+    \ call UnBundle(<args>)
+    " }
+" }
+
+" Bundles {
+    " Deps {
+        Bundle 'gmarik/vundle'
+    " }
+" }
+
+" General {
+    if count(g:spf13_bundle_groups, 'general')
+        Bundle 'altercation/vim-colors-solarized'
+        Bundle 'Lokaltog/vim-easymotion'
+        Bundle 'godlygeek/tabular'
+        Bundle 'scrooloose/nerdcommenter'
+        Bundle 'scrooloose/nerdtree'
+        Bundle 'vim-erlang/vim-erlang-tags'
+        Bundle 'SirVer/ultisnips'
+    endif
+" }
+
+" YouCompleteMe {
+    if count(g:spf13_bundle_groups, 'youcompleteme')
+        Bundle 'Valloric/YouCompleteMe'
+    endif
+" }
+
+" Erlang{
+    if count(g:spf13_bundle_groups, 'erlang')
+        Bundle 'jimenezrick/vimerl'
+    endif
+" }

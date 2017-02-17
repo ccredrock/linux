@@ -1,0 +1,129 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+# Uncomment the following line if you don't like systemctl's auto-paging feature:
+# export SYSTEMD_PAGER=
+
+# User specific aliases and functions
+
+# ====================================================================
+# @doc command alias
+# ====================================================================
+alias .grep='find -name "*.hrl" -o -name "*.erl" |xargs grep --color=auto -n'
+alias .ll='ls -l -h --full-time'
+
+alias .test='cd ~/test'
+alias .learn='cd ~/learn'
+alias ..='cd ..'
+alias ...='cd ...'
+
+# ====================================================================
+# @doc fish alias
+# ====================================================================
+GAME_DIR=~/work/fish/trunk/server_v5
+GAME_SERVER_DIR=~/work/fish/trunk/server_v5/server/game_server
+OLD_GAME_SERVER_DIR=~/work/fish/trunk/server_v5/server/game_server
+CLENT_PROTO_DIR=$GAME_DIR/../client/cocos2d-x-3.3rc0/Project/qmsj/res/script/protobuf
+
+alias .hotswap='sh $GAME_SERVER_DIR/scripts/hotswap.sh'
+
+alias .server='cd $GAME_SERVER_DIR'
+alias .sc='vim $GAME_SERVER_DIR/ebin/game_server.config.src'
+alias .old_server='cd $OLD_GAME_SERVER_DIR'
+alias .upserver='cd $GAME_DIR \
+    && svn up \
+    ; cd -'
+alias .mkserver='cd $GAME_SERVER_DIR/scripts \
+    && sh mmake.sh \
+    ; cd -'
+alias .stserver='cd $GAME_SERVER_DIR/scripts \
+    && sh start_all_shell_nogui.sh \
+    ; cd -'
+
+alias .strobot='cd $GAME_SERVER_DIR/scripts \
+    && sh start_robot.sh \
+    ; cd -'
+alias .shrobot='ps aux |grep robot_type|grep -v grep'
+alias .sprobot='cd $GAME_SERVER_DIR/scripts \
+    && sh stop_robot.sh \
+    ; cd -'
+
+alias .upproto='cd $GAME_DIR/common \
+    && svn up \
+    ; cd - \
+    ; cd $CLENT_PROTO_DIR \
+    && svn up \
+    ; cd -'
+alias .mkproto='cd $GAME_SERVER_DIR/scripts \
+    && sh make_proto.sh \
+    ; cd -'
+
+alias .monster='cd $GAME_SERVER_DIR/src/modules/monster/'
+
+TPS_CONFIG_DIR=~/work/fish/TpsConfig
+alias .config='cd $TPS_CONFIG_DIR'
+
+alias .upconfig='cd $TPS_CONFIG_DIR\
+    && svn up \
+    ; cd -'
+alias .mkconfig='cd $TPS_CONFIG_DIR/_script \
+    && python 服务端配置——配置无地图——程序用.py \
+    ; cd -'
+alias .mkconfigall='cd $TPS_CONFIG_DIR/_script \
+    && python 服务端配置——全部生成——程序用.py \
+    ; cd -'
+
+alias .up='.upconfig \
+    && .mkconfig \
+    && .upproto \
+    && .mkproto \
+    && .upserver \
+    && .mkserver' 
+
+# ====================================================================
+# @doc u3d alias
+# ====================================================================
+U3D_SERVER_DIR=~/work/u3d
+U3D_SERVER_DIR_BIN=~/work/u3d/u3d_proj/bin
+U3D_ROBOT_DIR_BIN=~/work/u3d/u3d_robot/bin
+
+alias .udserver='cd $U3D_SERVER_DIR'
+alias .usserver='cd $U3D_SERVER_DIR_BIN && ./runctl live || cd -'
+alias .usrobot='cd $U3D_ROBOT_DIR_BIN && sh run.sh live || cd -'
+
+alias .note='vim $U3D_SERVER_DIR/u3d_robot/NOTE.erl'
+alias .swap='sh $U3D_ROBOT_DIR_BIN/hotswap.sh'
+
+# ====================================================================
+# @doc else
+# ====================================================================
+function stop_nginx()
+{
+    PID=`ps aux |grep nginx |grep master |awk {'print $2'}` \
+        && if [[ $PID != "" ]]; then sudo kill -QUIT $PID; fi
+}
+alias .spng="stop_nginx && echo stop_nginx ok"
+alias .stng="sudo nginx && echo start_nginx ok"
+alias .mdng="sudo vim /usr/local/nginx/conf/nginx.conf"
+alias .rsng="stop_nginx && sudo nginx && echo restart_nginx ok"
+
+alias .bashrc="vim ~/.bashrc"
+alias .source="source ~/.bashrc"
+alias .erlsni="vim ~/.vim/bundle/vim-snippets/snippets/erlang.snippets"
+alias .view="find ~/.vimviews/ -name"
+
+# ====================================================================
+# @doc 显示当前路径分支的脚本
+# ====================================================================
+#function parse_git_dirty {
+#[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)"  ]] && echo "*"
+#}
+
+#function parse_git_branch {
+#git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+#}
+#PS1='\u@\h:\W\[\e[1;36m\]$(parse_git_branch)\[\e[0m\]$ '']]'
