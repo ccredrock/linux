@@ -6,7 +6,7 @@
 * hello.o ~ hello:   链接器 gcc hello.o -o hello
 
 ##系统硬件组成
-    CPU ~ _系统总线_ ~ I/O桥 ~ _存储器总线_ ~ 主存储器
+    CPU ~ 系统总线 ~ I/O桥 ~ 存储器总线 ~ 主存储器
                       |
                      I/O总线
                       |
