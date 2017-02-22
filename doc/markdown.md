@@ -9,7 +9,7 @@
     # 这是 H1
     ## 这是 H2
     ###### 这是 H6
-
+show:  
 This is an H1
 =============
 This is an H2
@@ -25,7 +25,7 @@ This is an H2
 
     > first line
     > second line.
-
+show:  
 > first line  
 second line.
 
@@ -45,7 +45,7 @@ second line.
          retract_list2
     *    retract_list1
     retract_list2
-
+show:  
 * list1
 * list2
 + list1
@@ -62,7 +62,7 @@ retract_list2
 ##代码
         code1
         code2
-  
+show:  
     code1
     code2
 
@@ -70,7 +70,7 @@ retract_list2
     ***
     ---
     -------------------------
-
+show:  
 ***
 ---
 -------------------------
@@ -85,6 +85,7 @@ retract_list2
     [Google][]
     [Google]: http://google.com/
 
+show:  
 [This link](http://example.net/, "title")  
 [This link](./example)  
 
@@ -99,8 +100,7 @@ This is [an example][id] reference-style link.
     _single asterisks_
     **single asterisks**
     __single asterisks__
-
-
+show:  
 *single asterisks*  
 _single asterisks_  
 **single asterisks**  
@@ -109,7 +109,7 @@ __single asterisks__
 ##代码
     Use the `printf()` function.
     ``There is a literal backtick (`) here.``
-
+show:  
 Use the `printf()` function.  
 ``There is a literal backtick (`) here.``
 
@@ -117,7 +117,7 @@ Use the `printf()` function.
     ![Alt text](/path/to/img.jpg "Optional title")
     ![Alt text][id]
     [id]: url/to/image  "Optional title attribute"
-
+show:  
 ![Alt text](/path/to/img.jpg "Optional title")  
 ![Alt text][id]  
 [id]: url/to/image  "Optional title attribute"
@@ -127,8 +127,13 @@ Use the `printf()` function.
     <http://example.com/>
     address@example.com
     <address@example.com>
-
+show:  
 http://example.com/  
 <http://example.com/>  
 address@example.com  
 <address@example.com>
+
+##其他
+* 换行 行尾两个空格
+* 转义 反斜杠
+
