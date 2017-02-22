@@ -87,13 +87,13 @@ show:
 
 show:  
 [This link](http://example.net/, "title")  
-[This link](./example)  
+[This link](./example)
 
-This is [an example][id] reference-style link.  
-[id]: http://example.com/  "Optional Title Here"  
+This is [an example][id] reference-style link.
+[id]: http://example.com/  "Optional Title Here"
 
-[Google][]  
-[Google]: http://google.com/  
+[Google][]
+[Google]: http://google.com/
 
 ##强调
     *single asterisks*
