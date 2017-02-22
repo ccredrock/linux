@@ -54,6 +54,7 @@ show:
 - list2
 1. list2
 2. list2
+show:  
 *    retract_list1
      retract_list2
 *    retract_list1
@@ -63,6 +64,7 @@ retract_list2
         code1
         code2
 show:  
+
     code1
     code2
 
@@ -88,10 +90,8 @@ show:
 show:  
 [This link](http://example.net/, "title")  
 [This link](./example)
-
 This is [an example][id] reference-style link.
 [id]: http://example.com/  "Optional Title Here"
-
 [Google][]
 [Google]: http://google.com/
 
