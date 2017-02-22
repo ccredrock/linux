@@ -41,9 +41,9 @@ second line.
     - list2
     1. list2
     2. list2
-    *    retract_list1
+    *    retract_list1  
          retract_list2
-    *    retract_list1
+    *    retract_list1  
     retract_list2
 show:  
 * list1
