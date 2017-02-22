@@ -55,9 +55,11 @@ show:
 1. list1
 2. list2
 
+-------------------------
 *    retract_list1
      retract_list2
 
+-------------------------
 *    retract_list1
 retract_list2
 
