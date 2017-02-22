@@ -5,3 +5,4 @@
 * [第二章 信息的表示和处理](./computer_system_2.md)
 * [第三章 程序的机器级表示](./computer_system_3.md)
 * [第四章 处理器体系结构](./computer_system_4.md)
+* [第五章 优化程序性能](./computer_system_5.md)
