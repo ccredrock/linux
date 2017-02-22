@@ -47,15 +47,17 @@ second line.
     retract_list2
 show:  
 * list1
-* list2  
+* list2
 + list1
-+ list1  
++ list1
 - list2
-- list2  
+- list2
 1. list1
-2. list2  
+2. list2
+
 *    retract_list1
      retract_list2
+
 *    retract_list1
 retract_list2
 
