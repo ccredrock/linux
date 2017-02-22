@@ -6,7 +6,7 @@
     This is an H2
     -------------
 
-    ># 这是 H1
+    # 这是 H1
     ## 这是 H2
     ###### 这是 H6
 
@@ -15,7 +15,7 @@ This is an H1
 This is an H2
 -------------
 
-># 这是 H1
+# 这是 H1
 ## 这是 H2
 ###### 这是 H6
 
@@ -26,10 +26,10 @@ This is an H2
     > first line
     > second line.
 
-> first line
+> first line  
 second line.
 
-> first line
+> first line  
 > second line.
 
 ##列表
@@ -62,7 +62,7 @@ retract_list2
 ##代码
         code1
         code2
-
+  
     code1
     code2
 
@@ -85,14 +85,14 @@ retract_list2
     [Google][]
     [Google]: http://google.com/
 
-[This link](http://example.net/, "title")
-[This link](./example)
+[This link](http://example.net/, "title")  
+[This link](./example)  
 
-This is [an example][id] reference-style link.
-[id]: http://example.com/  "Optional Title Here"
+This is [an example][id] reference-style link.  
+[id]: http://example.com/  "Optional Title Here"  
 
-[Google][]
-[Google]: http://google.com/
+[Google][]  
+[Google]: http://google.com/  
 
 ##强调
     *single asterisks*
@@ -101,16 +101,16 @@ This is [an example][id] reference-style link.
     __single asterisks__
 
 
-*single asterisks*
-_single asterisks_
-**single asterisks**
+*single asterisks*  
+_single asterisks_  
+**single asterisks**  
 __single asterisks__
 
 ##代码
     Use the `printf()` function.
     ``There is a literal backtick (`) here.``
 
-Use the `printf()` function.
+Use the `printf()` function.  
 ``There is a literal backtick (`) here.``
 
 ##图片
@@ -118,8 +118,8 @@ Use the `printf()` function.
     ![Alt text][id]
     [id]: url/to/image  "Optional title attribute"
 
-![Alt text](/path/to/img.jpg "Optional title")
-![Alt text][id]
+![Alt text](/path/to/img.jpg "Optional title")  
+![Alt text][id]  
 [id]: url/to/image  "Optional title attribute"
 
 ##自动链接
@@ -128,7 +128,7 @@ Use the `printf()` function.
     address@example.com
     <address@example.com>
 
-http://example.com/
-<http://example.com/>
-address@example.com
+http://example.com/  
+<http://example.com/>  
+address@example.com  
 <address@example.com>
