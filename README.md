@@ -9,3 +9,6 @@
 
 ## 文本
 * [markdown](./doc/markdown.md)
+
+## 理论
+* [AI](./doc/ai.md)
