@@ -8,3 +8,4 @@
 * [Mysql](./doc/sum_mysql.md)
 * [markdown](./doc/sum_markdown.md)
 * [AI](./doc/sum_ai.md)
+* [算法](./doc/sum_sort_algorithm.md)
