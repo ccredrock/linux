@@ -10,6 +10,7 @@
 #define BUBBLE_SORT 1
 #define INSERT_SORT 2
 #define SELECT_SORT 3
+#define MERGE_SORT  4
 
 int data[SIZE];
 
@@ -20,11 +21,13 @@ int main(void)
     sort_test(data, SIZE, BUBBLE_SORT, "bubble_sort");
     sort_test(data, SIZE, INSERT_SORT, "insert_sort");
     sort_test(data, SIZE, SELECT_SORT, "select_sort");
+    sort_test(data, SIZE, MERGE_SORT, "merge_sort");
 }
 
 int init(int data[], int sum)
 {
     int i = 0;
+    srand((int)time(0));
     for(; i < sum; ++i)
         data[i] = rand() % sum;
     printf("init list size:%d\n", SIZE);
@@ -56,6 +59,9 @@ sort_test(int data[], int sum, int type, char name[])
         case SELECT_SORT:
             select_sort(tmp, sum);
             break;
+        case MERGE_SORT:
+            merge_sort(tmp, sum);
+            break;
     }
     gettimeofday(&end, NULL);
     long int cost = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
@@ -67,11 +73,11 @@ int bubble_sort(int data[], int sum)
 {
     int i = 0, j = 0;
     int did = 0, tmp = 0;
-    for(; i < sum; i++)
+    for(; i < sum; i++)                 // O(n)
     {
-        for(j = sum - 2; j >= i; j--)      // O(n)
+        for(j = sum - 2; j >= i; j--)   // O(n^2)
         {
-            if(data[j] > data[j + 1])       // O(n^2)
+            if(data[j] > data[j + 1])
             {
                 did = !0;
                 tmp = data[j];
@@ -87,9 +93,9 @@ int insert_sort(int data[], int sum)
 {
     int i = 0, j = 0;
     int tmp = 0;
-    for(; i < sum; i++)
+    for(; i < sum; i++)                 // O(n)
     {
-        tmp = data[i];                  // O(n)
+        tmp = data[i];
         for(j = i; j > 0; j--)          // O(n^2)
         {
             if(tmp < data[j - 1])
@@ -109,10 +115,10 @@ int select_sort(int data[], int sum)
 {
     int i = 0, j = 0, s = 0;
     int tmp = 0;
-    for(; i < sum; i++)
+    for(; i < sum; i++)                       // O(n)
     {
-        tmp = data[i];                  // O(n)
-        for(s = i, j = i + 1; j < sum; j++)    // O(n^2)
+        tmp = data[i];
+        for(s = i, j = i + 1; j < sum; j++)   // O(n^2)
         {
             if(data[j] < tmp)
             {
@@ -126,4 +132,43 @@ int select_sort(int data[], int sum)
             data[i] = tmp;
         }
     }
+}
+
+// [1,4,2,3] -> [1,4], [2,3]
+int merge_sort(int data[], int sum)
+{
+    int tmp_data[sum];
+    int *src_data = data, *dst_data = tmp_data;
+    int d = 0, k = 0, i = 0, j = 0, mi = 0, mj = 0, t = 0;
+    for(d = 1; d < sum; d *= 2)     // O(log2n)
+    {
+        for(k = 0; k < sum; k += d * 2) // O(nlog2n)
+        {
+            i = k, j = k + d, t = k;
+            mi = k + d < sum ? k + d : sum;
+            mj = k + d * 2 < sum ? k + d * 2 : sum;
+            while(i < mi && j < mj)
+            {
+                if(src_data[i] < src_data[j])
+                {
+                    dst_data[t++] = src_data[i++];
+                } else
+                {
+                    dst_data[t++] = src_data[j++];
+                }
+            }
+            while(i < mi) dst_data[t++] = src_data[i++];
+            while(j < mj) dst_data[t++] = src_data[j++];
+        }
+        if(src_data == data)
+        {
+            src_data = tmp_data;
+            dst_data = data;
+        } else
+        {
+            src_data = data;
+            dst_data = tmp_data;
+        }
+    }
+    if(dst_data == data) memcpy(data, tmp_data, sizeof(int) * sum);
 }
