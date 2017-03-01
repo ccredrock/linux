@@ -11,6 +11,7 @@
 #define INSERT_SORT 2
 #define SELECT_SORT 3
 #define MERGE_SORT  4
+#define QUICK_SORT  5
 
 int data[SIZE];
 
@@ -22,6 +23,7 @@ int main(void)
     sort_test(data, SIZE, INSERT_SORT, "insert_sort");
     sort_test(data, SIZE, SELECT_SORT, "select_sort");
     sort_test(data, SIZE, MERGE_SORT, "merge_sort");
+    sort_test(data, SIZE, QUICK_SORT, "quick_sort");
 }
 
 int init(int data[], int sum)
@@ -61,6 +63,9 @@ sort_test(int data[], int sum, int type, char name[])
             break;
         case MERGE_SORT:
             merge_sort(tmp, sum);
+            break;
+        case QUICK_SORT:
+            quick_sort(tmp, sum);
             break;
     }
     gettimeofday(&end, NULL);
@@ -140,7 +145,7 @@ int merge_sort(int data[], int sum)
     int tmp_data[sum];
     int *src_data = data, *dst_data = tmp_data;
     int d = 0, k = 0, i = 0, j = 0, mi = 0, mj = 0, t = 0;
-    for(d = 1; d < sum; d *= 2)     // O(log2n)
+    for(d = 1; d < sum; d *= 2)         // O(log2n)
     {
         for(k = 0; k < sum; k += d * 2) // O(nlog2n)
         {
@@ -172,3 +177,37 @@ int merge_sort(int data[], int sum)
     }
     if(dst_data == data) memcpy(data, tmp_data, sizeof(int) * sum);
 }
+
+int quick_sort(int data[], int sum)
+{
+    int start[sum / 2], end[sum / 2];
+    int t = 0;
+    int i = 0, j = 0;
+    int tmp = 0, mid;
+    for(start[t] = 0, end[t] = sum - 1; t >= 0;)
+    {
+        if(start[t] >= end[t] - 1)
+        {
+            t--;
+        }else
+        {
+            mid = end[t];
+            for(i = start[t], j = i; i < end[t]; i++)
+            {
+                if(data[i] < data[mid])
+                {
+                    tmp = data[i];
+                    data[i] = data[j];
+                    data[j++] = tmp;
+                }
+            }
+            tmp = data[i];
+            data[i] = data[j];
+            data[j] = tmp;
+            start[t + 1] = j + 1;
+            end[t + 1] = end[t];
+            end[t++] = j - 1;
+        }
+    }
+}
+

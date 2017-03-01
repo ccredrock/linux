@@ -1,7 +1,7 @@
 #[排序算法](../code/sum_sort_algorithm.c)
 
 ##冒泡排序
-* 理论:两两比较相邻记录
+* 理论:迭代比较相邻记录
 * 时间复杂度: O(n) ~ O(n^2)
 * 稳定
 
@@ -11,16 +11,20 @@
 * 稳定
 
 ##选择排序
-* 理论:选择放入已排序记录尾
+* 理论:选择极值放入已排序尾
 * 时间复杂度: O(n^2) ~ O(n^2)
 * 不稳定
 
 ##归并排序
-* 理论:选择放入已排序记录尾
-* 时间复杂度: O(nlog2n) ~ O(nlog2n)
+* 理论:归并过程中排序
+* 时间复杂度: O(nlogn) ~ O(nlogn)
 * 稳定
 
 ##快速排序
+* 理论:拆分过程两侧排序
+* 时间复杂度: O(nlogn) ~ O(n^2)
+* 稳定
+
 ##希尔排序
 ##堆排序
 ##计数排序
@@ -28,6 +32,4 @@
 ##基数排序
 
 ##链接
-* [算法](http://www.cnblogs.com/lqminn/p/3642027.html)
-* [稳定性](http://www.cnblogs.com/lqminn/p/3642027.html)
-* [时间复杂度](http://blog.csdn.net/hr10707020217/article/details/10581371)
+* [算法]((http://blog.csdn.net/jnu_simba/article/details/9705111)
