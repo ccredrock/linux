@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/time.h>
 
-#define SIZE 100
+#define SIZE 1000
 #define NAME 20
 
 #define BUBBLE_SORT 1
