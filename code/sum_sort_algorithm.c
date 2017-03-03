@@ -12,6 +12,7 @@
 #define SELECT_SORT 3
 #define MERGE_SORT  4
 #define QUICK_SORT  5
+#define HEAP_SORT   6
 
 int data[SIZE];
 
@@ -22,8 +23,9 @@ int main(void)
     sort_test(data, SIZE, BUBBLE_SORT, "bubble_sort");
     sort_test(data, SIZE, INSERT_SORT, "insert_sort");
     sort_test(data, SIZE, SELECT_SORT, "select_sort");
-    sort_test(data, SIZE, MERGE_SORT, "merge_sort");
-    sort_test(data, SIZE, QUICK_SORT, "quick_sort");
+    sort_test(data, SIZE, MERGE_SORT,  "merge_sort");
+    sort_test(data, SIZE, QUICK_SORT,  "quick_sort");
+    sort_test(data, SIZE, HEAP_SORT,   "heap_sort");
 }
 
 int init(int data[], int sum)
@@ -67,6 +69,9 @@ sort_test(int data[], int sum, int type, char name[])
         case QUICK_SORT:
             quick_sort(tmp, sum);
             break;
+        case HEAP_SORT:
+            heap_sort(tmp, sum);
+            break;
     }
     gettimeofday(&end, NULL);
     long int cost = 1000000 * (end.tv_sec - start.tv_sec) + end.tv_usec - start.tv_usec;
@@ -85,9 +90,7 @@ int bubble_sort(int data[], int sum)
             if(data[j] > data[j + 1])
             {
                 did = !0;
-                tmp = data[j];
-                data[j] = data[j + 1];
-                data[j + 1] = tmp;
+                tmp = data[j], data[j] = data[j + 1], data[j + 1] = tmp;
             }
         }
         if(!did) return;
@@ -186,7 +189,7 @@ int quick_sort(int data[], int sum)
     int tmp = 0, mid;
     for(start[t] = 0, end[t] = sum - 1; t >= 0;)
     {
-        if(start[t] >= end[t] - 1)
+        if(start[t] >= end[t])
         {
             t--;
         }else
@@ -196,17 +199,46 @@ int quick_sort(int data[], int sum)
             {
                 if(data[i] < data[mid])
                 {
-                    tmp = data[i];
-                    data[i] = data[j];
-                    data[j++] = tmp;
+                    tmp = data[i], data[i] = data[j], data[j++] = tmp;
                 }
             }
-            tmp = data[i];
-            data[i] = data[j];
-            data[j] = tmp;
+            tmp = data[i], data[i] = data[j], data[j] = tmp;
             start[t + 1] = j + 1;
             end[t + 1] = end[t];
             end[t++] = j - 1;
+        }
+    }
+}
+
+int heap_sort(int data[], int sum)
+{
+    int index = 0, left = 0, right = 0, itmp = 0, tmp = 0;
+    int i = 0;
+    for(i = (sum - 1) / 2; i >= 0; i--)
+    {
+        index = i;
+        while(!0)
+        {
+            itmp = index, left = 2 * index + 1, right = 2 * (index + 1);
+            if (left < sum && data[itmp] < data[left]) itmp = left;
+            if (right < sum && data[itmp] < data[right]) itmp = right;
+            if (itmp == index) break;
+            tmp = data[index], data[index] = data[itmp], data[itmp] = tmp;
+            index = itmp;
+        }
+    }
+    for(i = sum - 1; i > 0; i--)
+    {
+        tmp = data[0], data[0] = data[i], data[i] = tmp;
+        index = 0;
+        while(!0)
+        {
+            itmp = index, left = 2 * index + 1, right = 2 * (index + 1);
+            if (left < i && data[itmp] < data[left]) itmp = left;
+            if (right < i && data[itmp] < data[right]) itmp = right;
+            if (itmp == index) break;
+            tmp = data[index], data[index] = data[itmp], data[itmp] = tmp;
+            index = itmp;
         }
     }
 }

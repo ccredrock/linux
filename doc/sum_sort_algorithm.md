@@ -16,20 +16,25 @@
 * 不稳定
 
 ##归并排序
-* 理论:归并过程中排序
+* 理论:归并 左右排序
 * 时间复杂度: O(nlogn) ~ O(nlogn)
 * 稳定
 
 ##快速排序
-* 理论:拆分过程两侧排序
+* 理论:拆分 中心两侧排序
 * 时间复杂度: O(nlogn) ~ O(n^2)
 * 稳定
 
 ##希尔排序
 ##堆排序
+* 理论:创建最大堆 循环提取最大数
+* 时间复杂度: O(nlogn) ~ O(nlogn)
+* 不稳定
+
 ##计数排序
 ##桶排序
 ##基数排序
 
 ##链接
-* [算法]((http://blog.csdn.net/jnu_simba/article/details/9705111)
+* [算法](http://blog.csdn.net/jnu_simba/article/details/9705111)
+
